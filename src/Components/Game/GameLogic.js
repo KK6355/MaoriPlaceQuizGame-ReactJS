@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { quizData } from "../../Assets/data";
+import Answers from "./Answers";
+import QuestionAndHint from "./QuestionAndHint";
 const GenerateQuestion = () => {
   const [question, setQuestion] = useState("");
   const [hint, setHint] = useState("");
+  // const [answer, setAnswer] = useState("");
   // sort data
   const sortedData = [...quizData].sort();
   // console.log(sortedData);
@@ -10,18 +13,24 @@ const GenerateQuestion = () => {
   const quizNum = sortedData.length;
   const quizIndex = Math.floor(Math.random() * quizNum);
   const randomQuiz = sortedData[quizIndex];
+  const answers = sortedData.map((item) => item.Answer);
 
-  const getAQuesion = () => {
+  const getAQuesionHandler = () => {
     setQuestion(randomQuiz.Question);
     setHint(randomQuiz.Components);
   };
+  // const getAnswerHandler =()=>{
+
+  // }
 
   return (
     <div>
-      <button onClick={getAQuesion}>Get A Random Place</button>
-      <h3>{question}</h3>
-      {question && <p>Hint: {hint}</p>}
-      {question && <p>The English Name of this place is:</p>}
+      <QuestionAndHint
+        question={question}
+        hint={hint}
+        ongetAQuesion={getAQuesionHandler}
+      />
+      {question && <Answers answers={answers} />}
     </div>
   );
 };
