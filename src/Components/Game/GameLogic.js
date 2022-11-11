@@ -7,13 +7,6 @@ const GenerateQuestion = () => {
   const [hint, setHint] = useState("");
   const [answer, setAnswer] = useState("");
 
-  // const [answer, setAnswer] = useState("");
-  // sort data
-  // const sortedData = [...quizData].sort();
-  // const quizNum = sortedData.length;
-  // const quizIndex = Math.floor(Math.random() * quizNum);
-  // const randomQuiz = sortedData[quizIndex];
-  // const answers = sortedData.map((item) => item.Answer);
   const sortedData = [...quizData].sort();
   const quizNum = sortedData.length;
   const answers = sortedData.map((item) => item.Answer);
@@ -32,6 +25,9 @@ const GenerateQuestion = () => {
 
     console.log(randomQuiz);
   };
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
 
   return (
     <div>
@@ -44,6 +40,7 @@ const GenerateQuestion = () => {
       {question && (
         <Answers answers={answers} answer={answer} question={question} />
       )}
+      {question && <button onClick={refreshPage}>Reset Game</button>}
     </div>
   );
 };

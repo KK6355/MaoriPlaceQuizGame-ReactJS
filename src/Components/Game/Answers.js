@@ -39,6 +39,14 @@ const Answers = (props) => {
       }
     }
   };
+  const clearResultsHandler = () => {
+    setCorrectQuestions([]);
+    setWrongQuestion([]);
+    setScore(0);
+    setWrongNumer(0);
+    setCorrectNumer(0);
+    setSelectAnswer("");
+  };
   //   const checkAnswerHandler = (e) => {
   //
 
@@ -63,6 +71,11 @@ const Answers = (props) => {
         correctNumer={correctNumer}
         wrongtNumer={wrongtNumer}
       />
+      {correctNumer || wrongtNumer ? (
+        <button onClick={clearResultsHandler}>Clear Results</button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
