@@ -1,8 +1,10 @@
+import classes from "./QuestionAndHint.module.css";
+
 const QuestionAndHint = (props) => {
   return (
-    <div>
-      <h3>{props.question}</h3>
-      {props.question && <p>Hint: {props.hint}</p>}
+    <div className={classes.card}>
+      <p className={classes.question}>{props.question}</p>
+      <p className={classes.hint}>Hint: {props.hint}</p>
     </div>
   );
 };

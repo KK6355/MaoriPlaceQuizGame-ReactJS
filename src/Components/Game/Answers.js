@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Results from "./Results";
+import classes from "./Answers.module.css";
 
 const Answers = (props) => {
   console.log(props.answer, props.question);
@@ -54,9 +55,9 @@ const Answers = (props) => {
   console.log(props.answer, selectAnswer, answerIsCorrect);
   console.log(correctQuestions, wrongQuestions);
   return (
-    <div>
-      <form>
-        <label>The English Name of this place is:</label>
+    <div className={classes.answers}>
+      <form className={classes.answers_form}>
+        <label>The English Name of this place is</label>
         <select onChange={selectHandler} value={selectAnswer}>
           <option value="">Choose your answer from dropdown list</option>
           {answersOption}
@@ -72,7 +73,9 @@ const Answers = (props) => {
         wrongtNumer={wrongtNumer}
       />
       {correctNumer || wrongtNumer ? (
-        <button onClick={clearResultsHandler}>Clear Results</button>
+        <button onClick={clearResultsHandler} className={classes.clear_button}>
+          Clear Results
+        </button>
       ) : (
         ""
       )}
