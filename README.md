@@ -1,3 +1,4 @@
 Maori places names quiz-a fun react-js app
-![image](https://user-images.githubusercontent.com/93057655/201829196-e34941d4-5d9b-4934-94b3-226852829a69.png)
+![image](https://user-images.githubusercontent.com/93057655/201841803-43474d3e-ae0e-4268-a3eb-f098630a1798.png)
+
 
