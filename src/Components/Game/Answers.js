@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Results from "./Results";
 import classes from "./Answers.module.css";
 
@@ -10,7 +10,7 @@ const Answers = (props) => {
   const [correctQuestions, setCorrectQuestions] = useState([]);
   const [correctNumer, setCorrectNumer] = useState(0);
   const [wrongQuestions, setWrongQuestion] = useState([]);
-  const [wrongtNumer, setWrongNumer] = useState(0);
+  const [wrongNumer, setWrongNumer] = useState(0);
   const answersOption = props.answers.sort().map((item) => (
     <option value={item} key={Math.random() * 10000}>
       {item}
@@ -54,25 +54,45 @@ const Answers = (props) => {
   //   };
   console.log(props.answer, selectAnswer, answerIsCorrect);
   console.log(correctQuestions, wrongQuestions);
+  useEffect(() => {
+    setSelectAnswer("");
+  }, [props.question]);
+
+  const selectStyle = `${
+    answerIsCorrect
+      ? classes.select_form_correct
+      : selectAnswer === ""
+      ? classes.select_form
+      : classes.select_form_wrong
+  }`;
+
   return (
     <div className={classes.answers}>
-      <form className={classes.answers_form}>
-        <label>The English Name of this place is</label>
-        <select onChange={selectHandler} value={selectAnswer}>
-          <option value="">Choose your answer from dropdown list</option>
-          {answersOption}
-        </select>
+      <form>
+        <div className={classes.select_form_lable}>
+          <label>The English Name of this place is</label>
+        </div>
+        <div>
+          <select
+            onChange={selectHandler}
+            value={selectAnswer}
+            className={selectStyle}
+          >
+            <option value="">Choose your answer from dropdown list</option>
+            {answersOption}
+          </select>
+        </div>
       </form>
 
-      {selectAnswer && (answerIsCorrect ? <p>correct</p> : <p>wrong</p>)}
+      {/* {selectAnswer && (answerIsCorrect ? <p>correct</p> : <p>wrong</p>)} */}
       <Results
         score={score}
         correctQuestions={correctQuestions}
         wrongQuestions={wrongQuestions}
         correctNumer={correctNumer}
-        wrongtNumer={wrongtNumer}
+        wrongNumer={wrongNumer}
       />
-      {correctNumer || wrongtNumer ? (
+      {correctNumer || wrongNumer ? (
         <button onClick={clearResultsHandler} className={classes.clear_button}>
           Clear Results
         </button>

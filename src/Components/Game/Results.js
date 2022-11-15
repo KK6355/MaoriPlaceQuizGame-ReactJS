@@ -1,9 +1,32 @@
 import { useEffect, useState } from "react";
+import Modal from "../UI/Modal";
 import classes from "./Results.module.css";
 const Results = (props) => {
   const [scoreIsHighlighted, setScoreIsHighlighted] = useState(false);
   const [correctIsHighlighted, setCorrectIsHighlighted] = useState(false);
   const [wrongIsHighlighted, setWrongIsHighlighted] = useState(false);
+  const [modalCorrectIsShown, setModalCorrectIsShown] = useState(false);
+  const [modalWrongIsShown, setModalWrongIsShown] = useState(false);
+  const showCorrectModalHandler = () => {
+    if (props.correctNumer > 0) {
+      setModalCorrectIsShown(true);
+    } else {
+      setModalCorrectIsShown(false);
+    }
+  };
+  const hideCorrectModalHandler = () => {
+    setModalCorrectIsShown(false);
+  };
+  const showWrongModalHandler = () => {
+    if (props.wrongNumer) {
+      setModalWrongIsShown(true);
+    } else {
+      setModalWrongIsShown(false);
+    }
+  };
+  const hideWrongModalHandler = () => {
+    setModalWrongIsShown(false);
+  };
   const scoreClasses = `${classes.score_number} ${
     scoreIsHighlighted ? classes.bump : ""
   }`;
@@ -49,7 +72,7 @@ const Results = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [props.wrongtNumer]);
+  }, [props.wrongNumer]);
   return (
     <div className={classes.layout}>
       <div className={classes.score}>
@@ -60,18 +83,44 @@ const Results = (props) => {
         <div>
           <div className={classes.summary_correct}>
             <p className={classes.summary_label}>Correct </p>
-            <button className={correctButtonClasses}>
-              {props.correctNumer}{" "}
+            <button
+              className={correctButtonClasses}
+              onClick={showCorrectModalHandler}
+            >
+              {props.correctNumer}
             </button>
           </div>
-          {/* <ul>{correctList}</ul> */}
+          {/* render modal list */}
+          {modalCorrectIsShown && (
+            <Modal onClose={hideCorrectModalHandler}>
+              <div className={classes.modal_list}>
+                <ul>
+                  {correctList}
+                  <button onClick={hideCorrectModalHandler}>close</button>
+                </ul>
+              </div>
+            </Modal>
+          )}
         </div>
         <div>
           <div className={classes.summary_wrong}>
             <p className={classes.summary_label}>wrong </p>
-            <button className={wrongButtonClasses}>{props.wrongtNumer}</button>
+            <button
+              className={wrongButtonClasses}
+              onClick={showWrongModalHandler}
+            >
+              {props.wrongNumer}
+            </button>
           </div>
-          {/* <ul>{wrongList}</ul> */}
+          {/* render modal list */}
+          {modalWrongIsShown && (
+            <Modal onClose={hideWrongModalHandler}>
+              <div className={classes.modal_list}>
+                <ul>{wrongList}</ul>
+                <button onClick={hideWrongModalHandler}>close</button>
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
     </div>

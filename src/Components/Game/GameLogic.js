@@ -29,6 +29,7 @@ const GenerateQuestion = () => {
 
     console.log(randomQuiz);
   };
+
   const refreshPage = () => {
     window.location.reload(false);
   };

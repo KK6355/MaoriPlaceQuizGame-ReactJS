@@ -3,12 +3,12 @@
   margin: auto;
   padding: 1rem;
 }
-.answers_form label {
+.select_form_lable {
   display: block;
   color: white;
   font-size: 2rem;
 }
-.answers_form select {
+.select_form {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -17,6 +17,29 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+.select_form_correct {
+  background-color: rgb(64, 244, 103);
+  color: white;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.select_form_wrong {
+  background-color: rgb(243, 72, 72);
+  color: white;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .clear_button {
   color: #444;
   background: none;

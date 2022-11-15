@@ -63,6 +63,30 @@
   box-shadow: 0 5px #666;
   transform: translateY(2px);
 }
+.modal_list {
+  justify-content: center;
+}
+.modal_list li {
+  text-align: center;
+  list-style: none;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+.modal_list button {
+  margin-top: 1rem;
+  margin-left: 35%;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #c7365f;
+  width: 30%;
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+}
 .bump {
   animation: bump 300ms ease-out;
 }
