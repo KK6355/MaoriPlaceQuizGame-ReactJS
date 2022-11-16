@@ -56,6 +56,7 @@ const Answers = (props) => {
   console.log(correctQuestions, wrongQuestions);
   useEffect(() => {
     setSelectAnswer("");
+    setAnswerIsCorrect(false);
   }, [props.question]);
 
   const selectStyle = `${
